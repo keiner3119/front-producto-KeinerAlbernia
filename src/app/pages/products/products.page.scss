@@ -1,0 +1,17 @@
+ion-card {
+  margin-bottom: 16px;
+}
+
+ion-thumbnail img {
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+ion-card-content {
+  font-size: 0.9em;
+  color: #666;
+}
+
+ion-button {
+  --border-radius: 8px;
+}

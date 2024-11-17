@@ -1,0 +1,115 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Gestión De Producto</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()">Cerrar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form (ngSubmit)="onSubmit()" [formGroup]="productForm">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="6" size-md="6" style="display: none;">
+          <ion-item>
+            <ion-input formControlName="id" type="hidden"></ion-input>
+          </ion-item>
+        </ion-col>
+
+        <ion-col size="6" size-md="6">
+          <ion-item>
+            <ion-label position="stacked">Descripción</ion-label>
+            <ion-input formControlName="descripcion" placeholder="Ingrese la descripción del producto" required></ion-input>
+          </ion-item>
+          <ion-note color="danger" *ngIf="productForm.get('descripcion')?.touched && productForm.get('descripcion')?.invalid">
+            La descripción es requerida y debe tener al menos 3 caracteres.
+          </ion-note>
+        </ion-col>
+        
+        <ion-col size="6" size-md="6">
+          <ion-item>
+            <ion-label position="stacked">Precio</ion-label>
+            <ion-input formControlName="precio" type="number" placeholder="Ingrese el precio" required></ion-input>
+          </ion-item>
+          <ion-note color="danger" *ngIf="productForm.get('precio')?.touched && productForm.get('precio')?.invalid">
+            El precio debe ser mayor o igual a 0.
+          </ion-note>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="6" size-md="6">
+          <ion-item>
+            <ion-label position="stacked">Cantidad</ion-label>
+            <ion-input formControlName="cantidad" type="number" placeholder="Ingrese la cantidad disponible" required></ion-input>
+          </ion-item>
+          <ion-note color="danger" *ngIf="productForm.get('cantidad')?.touched && productForm.get('cantidad')?.invalid">
+            La cantidad debe ser mayor o igual a 0.
+          </ion-note>
+        </ion-col>
+        
+        <ion-col size="6" size-md="6">
+          <ion-item>
+            <ion-label position="stacked">Comisión (%)</ion-label>
+            <ion-input formControlName="comision" type="number" placeholder="Ingrese la comisión" required></ion-input>
+          </ion-item>
+          <ion-note color="danger" *ngIf="productForm.get('comision')?.touched && productForm.get('comision')?.invalid">
+            La comisión debe estar entre 0 y 100.
+          </ion-note>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="6" size-md="6">
+          <ion-item>
+            <ion-label>Disponibilidad</ion-label>
+            <ion-toggle formControlName="disponible"></ion-toggle>
+          </ion-item>
+        </ion-col>
+        
+        <ion-col size="6" size-md="6">
+          <ion-item>
+            <ion-label position="stacked">ID de Negocio</ion-label>
+            <ion-input formControlName="idBussines" placeholder="Ingrese el ID del negocio" required></ion-input>
+          </ion-item>
+          <ion-note color="danger" *ngIf="productForm.get('idBussines')?.touched && productForm.get('idBussines')?.invalid">
+            El ID de negocio es requerido.
+          </ion-note>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="6" size-md="6">
+          <ion-item>
+            <ion-label position="stacked">Categoría</ion-label>
+            <ion-select formControlName="categoria" placeholder="Seleccione una categoría">
+              <ion-select-option *ngFor="let category of Categorys" [value]="category">
+                {{ category.nombre }}
+              </ion-select-option>
+            </ion-select>
+          </ion-item>
+          <ion-note color="danger" *ngIf="productForm.get('idCategoria')?.touched && productForm.get('idCategoria')?.invalid">
+            Seleccione una categoría.
+          </ion-note>
+        </ion-col>
+        
+        <ion-col size="6">
+          <ion-item>
+            <ion-label position="stacked">Imagen</ion-label>
+            <input type="file" (change)="onFileSelected($event)" />
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="ion-padding-top">
+        <ion-col size="6" size-md="6">
+          <ion-button expand="block" type="submit" color="primary" [disabled]="productForm.invalid">Guardar</ion-button>
+        </ion-col>
+        <ion-col size="6" size-md="6">
+          <ion-button expand="block" color="medium" (click)="dismiss()">Cancelar</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

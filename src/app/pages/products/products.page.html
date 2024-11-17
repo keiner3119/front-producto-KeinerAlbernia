@@ -1,0 +1,42 @@
+<app-header title="Productos"></app-header>
+
+<ion-content class="ion-padding">
+  <ion-list>
+    <ion-card *ngFor="let product of Products">
+      <ion-item>
+        <ion-thumbnail slot="start">
+          <img [src]="product.imagen.imageBase64" alt="Imagen de {{ product.descripcion }}" />
+        </ion-thumbnail>
+        <ion-label>
+          <h2>{{ product.descripcion }}</h2>
+          <p>Precio: {{ product.precio | currency }}</p>
+          <p>Cantidad: {{ product.cantidad }}</p>
+          <p>Comisión: {{ product.comision | percent }}</p>
+          <p>Disponibilidad: {{ product.disponible ? 'Disponible' : 'No disponible' }}</p>
+        </ion-label>
+      </ion-item>
+
+      <ion-card-content>
+        <p>Negocio: {{ product.idBussines }}</p>
+        <p>Categoría: {{ product.categoria.nombre }}</p>
+      </ion-card-content>
+
+      <ion-row>
+        <ion-col>
+          <ion-button expand="block" color="tertiary" (click)="editProduct(product.id)">Editar</ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button expand="block" color="danger" (click)="deleteProduct(product.id)">Eliminar</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+  </ion-list>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="primary" (click)="addProduct()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-button expand="block" color="danger" (click)="deleteAllProducts()">Eliminar todas los productos</ion-button>
+</ion-content>

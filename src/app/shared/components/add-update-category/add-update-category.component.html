@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Gestión De Categoría</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()">Cerrar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form (ngSubmit)="onSubmit()" [formGroup]="categoryForm">
+    <ion-grid>
+      <ion-row style="display: none;">
+        <ion-col size="12">
+          <ion-item>
+            <ion-label position="stacked">Id</ion-label>
+            <ion-input formControlName="id" type="hidden"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="12">
+          <ion-item>
+            <ion-label position="stacked">Nombre</ion-label>
+            <ion-input formControlName="nombre" placeholder="Ingrese el nombre de la categoría" required></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="12">
+          <ion-item>
+            <ion-label position="stacked">Descripción</ion-label>
+            <ion-textarea formControlName="descripcion" placeholder="Ingrese la descripción de la categoría" required></ion-textarea>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="12">
+          <ion-item>
+            <ion-label position="stacked">Imagen</ion-label>
+            <input type="file" required (change)="onFileSelected($event)" />
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="ion-padding-top">
+        <ion-col size="6">
+          <ion-button expand="block" type="submit" color="primary" [disabled]="categoryForm.invalid">Guardar</ion-button>
+        </ion-col>
+        <ion-col size="6">
+          <ion-button expand="block" color="medium" (click)="dismiss()">Cancelar</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

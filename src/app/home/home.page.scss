@@ -25,3 +25,30 @@
 #container a {
   text-decoration: none;
 }
+
+ion-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+}
+
+ion-card {
+  text-align: center;
+  margin: 20px;
+}
+
+ion-button {
+  margin-top: 10px;
+}
+
+ion-title {
+  text-align: center;
+}
+
+ion-grid {
+  width: 90%;
+  max-width: 400px;
+  margin-top: 20px;
+}

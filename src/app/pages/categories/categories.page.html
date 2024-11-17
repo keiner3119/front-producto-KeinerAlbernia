@@ -1,0 +1,34 @@
+<app-header title="Categorias"></app-header>
+
+<ion-content class="ion-padding">
+  <ion-list>
+    <ion-card *ngFor="let category of Categorys">
+      <ion-item>
+        <ion-thumbnail slot="start">
+          <img [src]="category.imagen.imageBase64" alt="Imagen de {{ category.nombre }}" />
+        </ion-thumbnail>
+        <ion-label>
+          <h2 style="color: black;">{{category.nombre}}</h2>
+          <p>{{category.descripcion}}</p>
+        </ion-label>
+      </ion-item>
+
+      <ion-row>
+        <ion-col>
+          <ion-button expand="block" color="tertiary" (click)="editCategory(category.id)">Editar</ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button expand="block" color="danger" (click)="deleteCategory(category.id)">Eliminar</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+  </ion-list>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="primary" (click)="addCategory()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-button expand="block" color="danger" (click)="deleteAllCategories()">Eliminar todas las categorías</ion-button>
+</ion-content>

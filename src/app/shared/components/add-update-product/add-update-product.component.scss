@@ -1,0 +1,31 @@
+ion-content {
+  --background: #f9f9f9;
+}
+
+ion-toolbar {
+  --background: #007aff;
+}
+
+ion-grid {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+ion-item {
+  margin-bottom: 12px;
+}
+
+ion-label {
+  font-weight: bold;
+}
+
+ion-button {
+  --border-radius: 8px;
+}
+
+@media (max-width: 576px) {
+  ion-col {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
